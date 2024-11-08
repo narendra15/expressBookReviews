@@ -26,7 +26,7 @@ public_users.get('/', async function (req, res) {
   
   try {
     // Simulate fetching data using Axios
-    const response = await axios.get('http://localhost:8000/books');
+    const response = await axios.get('http://localhost:5000/books');
     res.status(200).json(response.data);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch books", error: error.message });
@@ -41,7 +41,7 @@ public_users.get('/isbn/:isbn', async function (req, res) {
 
   try {
 
-    const response = await axios.get(`http://localhost:8000/books`);
+    const response = await axios.get(`http://localhost:5000/books`);
     const book = response.data[isbn];
 
     if (!book) {
@@ -57,7 +57,7 @@ public_users.get('/isbn/:isbn', async function (req, res) {
 public_users.get('/author/:author', async function (req, res) {
   const { author } = req.params;
   try {
-    const response = await axios.get('http://localhost:8000/books');
+    const response = await axios.get('http://localhost:5000/books');
     const authorBooks = Object.values(response.data).filter(book => book.author.toLowerCase() === author.toLowerCase());
 
     if (authorBooks.length === 0) {
@@ -77,7 +77,7 @@ public_users.get('/title/:title', async function (req, res) {
   
   try {
       // Fetch the book list from the external source
-      const response = await axios.get('http://localhost:8000/books');
+      const response = await axios.get('http://localhost:5000/books');
       
       // Filter books by title (case-insensitive)
       const titleBooks = Object.values(response.data).filter(book => 

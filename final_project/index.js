@@ -30,7 +30,7 @@ app.get('/books', (req, res) => {
     res.status(200).json(books);
 });
 
-const PORT = 8000;
+const PORT = 5000;
 
 app.use("/customer", customer_routes);
 app.use("/", genl_routes);
